@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* fonts */
 @font-face {
     font-family: 'Inter';
     src: url('fonts/Inter-Regular.woff2') format('woff2'),
@@ -12,6 +13,7 @@
     font-style: normal;
 }
 
+/* styling voor de hele pagina */
 body {
     background-color: #050542;
     color: white;
@@ -24,11 +26,13 @@ body {
     margin: 0;
 }
 
+/* headers */
 h1 {
     color: #67E5BF;
     margin-top: 20px; 
 }
 
+/* lists */
 ul {
     display: flex;
     gap: 15px;
@@ -37,6 +41,7 @@ ul {
     margin-top: 20px;
 }
 
+/* sections */
 section {
     width: 60vw;
     border: solid #67E5BF;
