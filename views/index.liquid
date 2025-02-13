@@ -6,45 +6,18 @@
   <li>Favoriete HTML tag</li>
 </ul>
 
+{% for person in persons %}
 <section>
-  <img src="images/mulab.jpeg" alt="">
+  <img src= {{ person.avatar }} alt="">
   <p>
-    Luc Hoogerwerf
+    {{ person.name }}
   </p>
   <p>
-    {{ persons.birthdate }}
+    {{ person.birthdate | date: "%d-%m-%Y" }}
   </p>
 </section>
+{% endfor %}
 
-<section>
-  <img src="images/mulab.jpeg" alt="">
-  <p>
-    Luc Hoogerwerf
-  </p>
-  <p>
-    10-02-2005
-  </p>
-</section>
-
-<section>
-  <img src="images/mulab.jpeg" alt="">
-  <p>
-    Luc Hoogerwerf
-  </p>
-  <p>
-    10-02-2005
-  </p>
-</section>
-
-<section>
-  <img src="images/mulab.jpeg" alt="">
-  <p>
-    Luc Hoogerwerf
-  </p>
-  <p>
-    10-02-2005
-  </p>
-</section>
 
 
 {% comment %} <h2>Students</h2>
