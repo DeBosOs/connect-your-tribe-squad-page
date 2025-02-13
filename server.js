@@ -54,7 +54,7 @@ app.get('/', async function (request, response) {
   
   // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
   // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
-
+  
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
   response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})

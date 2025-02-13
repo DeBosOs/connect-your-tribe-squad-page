@@ -8,7 +8,16 @@
 
 {% for person in persons %}
 <section>
-  <img src= {{ person.avatar }} alt="">
+  {% if person.avatar == null %}
+    <img src="images/default_pfp.jpg" alt="">
+  
+  {%  elsif person.avatar == "" %}
+    <img src="images/default_pfp.jpg" alt="">
+
+  {% else %}
+    <img src="{{ person.avatar }}" alt="">
+  {% endif  %}
+    
   <p>
     {{ person.name }}
   </p>
@@ -17,8 +26,6 @@
   </p>
 </section>
 {% endfor %}
-
-
 
 {% comment %} <h2>Students</h2>
 <ul>
