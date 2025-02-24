@@ -52,3 +52,8 @@ section p {
     margin-top: 10px; 
     text-align: center; 
 }
+
+@media (min-width: 800px) {
+    .container {
+        flex-direction: row;
+    }

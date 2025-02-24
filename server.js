@@ -67,7 +67,6 @@ app.post('/', async function (request, response) {
   response.redirect(303, '/')
 })
 
-
 // get route naar leeftijd pagina
 app.get('/leeftijd/:age', async function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
@@ -101,4 +100,18 @@ app.set('port', process.env.PORT || 8000)
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
+})
+
+//voor berichten
+// get
+let messages = []
+
+app.get('/berichten', async function (request, response) {
+  response.render('messages.liquid', {messages: messages})
+})
+
+// post
+app.post('/berichten', async function (request, response) {
+  messages.push(request.body.tekstje)
+  response.redirect(303, '/berichten')
 })
