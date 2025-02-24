@@ -22,7 +22,7 @@
         {{ person.name }}
       </p>
       <p>
-        {{ person.birthdate | date: "%s"  }}
+        {{ person.birthdate }}
 
         {% assign birth_timestamp = person.birthdate | date: '%s' | default: 0 %}
         {% assign now_timestamp = 'now' | date: '%s' %}
