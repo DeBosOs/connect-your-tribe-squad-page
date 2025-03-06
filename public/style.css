@@ -43,6 +43,9 @@ section {
     align-items: center; 
     padding-top: 30px;
     padding-bottom: 80px;
+    border-radius: 5px;
+    border: #66e5bf 1px solid;
+    box-shadow: -5px 5px 1px #66e5bf;
 }
 
 section img {
