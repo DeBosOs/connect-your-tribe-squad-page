@@ -34,7 +34,8 @@ ul {
 
 /* sections */
 section {
-    width: 60vw;
+    
+    width: 45vw;
     border: solid #67E5BF;
     margin-top: 20px;
     display: flex;
@@ -45,7 +46,8 @@ section {
 }
 
 section img {
-    width: 40%;
+    width: 80%;
+    aspect-ratio: 1;
 }
 
 section p {
@@ -56,4 +58,4 @@ section p {
 @media (min-width: 800px) {
     .container {
         flex-direction: row;
-    }
+    }}
