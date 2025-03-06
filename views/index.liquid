@@ -6,27 +6,33 @@
   <li>Favoriete HTML tag</li>
 </ul>
 <div class="container">
-  <section>
-    {% if person.avatar == null %}
-      <img src="images/default_pfp.jpg" alt="">
-    
-    {%  elsif person.avatar == "" %}
-      <img src="images/default_pfp.jpg" alt="">
-  
-    {% else %}
-      <img src="{{ person.avatar }}" alt="">
-    {% endif  %}
+  {% for person in persons %}
+    <section>
+      {% if person.avatar == null %}
+        <img src="images/default_pfp.jpg" alt="">
       
-    <p>
-      {{ person.name }}
-    </p>
-    <p>
-      {{ person.birthdate }}
-
-      {% assign birth_timestamp = person.birthdate | date: '%s' | default: 0 %}
-      {% assign now_timestamp = 'now' | date: '%s' %}
-      {% assign age = now_timestamp | minus: birth_timestamp | divided_by: 31556952 | floor %}
-      {{ age }}
-
+      {%  elsif person.avatar == "" %}
+        <img src="images/default_pfp.jpg" alt="">
+    
+      {% else %}
+        <img src="{{ person.avatar }}" alt="">
+      {% endif  %}
+        
+      <p>
+        {{ person.name }}
       </p>
-  </section>
+      <p>
+
+        {% assign birth_timestamp = person.birthdate | date: '%s' | default: 0 %}
+        {% assign now_timestamp = 'now' | date: '%s' %}
+        {% assign age = now_timestamp | minus: birth_timestamp | divided_by: 31556952 | floor %}
+        {{ age }}
+
+        </p>
+    </section>
+
+    {% endfor %}
+    
+    </div>
+
+    {% render 'partials/foot.liquid', squads: squads %}
