@@ -1,64 +1,83 @@
+/* Your existing CSS */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-
-/* styling voor de hele pagina */
-body {
+  }
+  
+  /* styling voor de hele pagina */
+  body {
     background-color: #050542;
     color: white;
     font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: flex-start; 
+    align-items: center;
+    justify-content: flex-start;
     height: 100vh;
     margin: 0;
-}
-
-/* headers */
-h1 {
+  }
+  
+  /* headers */
+  h1 {
     color: #67E5BF;
-    margin-top: 20px; 
-}
-
-/* lists */
-ul {
+    margin-top: 20px;
+  }
+  
+  /* lists */
+  ul {
     display: flex;
     gap: 15px;
     list-style: none;
     padding: 0;
     margin-top: 20px;
-}
-
-/* sections */
-section {
-    
-    width: 45vw;
+  }
+  
+  /* Container stylng*/
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  /* sections */
+  section {
+    width: 45%;
     border: solid #67E5BF;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     padding-top: 30px;
     padding-bottom: 80px;
     border-radius: 5px;
     border: #66e5bf 1px solid;
     box-shadow: -5px 5px 1px #66e5bf;
-}
-
-section img {
+  }
+  
+  section img {
     width: 80%;
     aspect-ratio: 1;
-}
-
-section p {
-    margin-top: 10px; 
-    text-align: center; 
-}
-
-@media (min-width: 800px) {
+  }
+  
+  section p {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Media query voor bredere schermen */
+  @media (min-width: 800px) {
     .container {
-        flex-direction: row;
-    }}
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    section {
+      width: 25%;
+      margin: 10px;
+    }
+  }
