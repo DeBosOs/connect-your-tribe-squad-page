@@ -6,39 +6,27 @@
   <li>Favoriete HTML tag</li>
 </ul>
 <div class="container">
-  {% for person in persons %}
-    <section>
-      {% if person.avatar == null %}
-        <img src="images/default_pfp.jpg" alt="">
+  <section>
+    {% if person.avatar == null %}
+      <img src="images/default_pfp.jpg" alt="">
+    
+    {%  elsif person.avatar == "" %}
+      <img src="images/default_pfp.jpg" alt="">
+  
+    {% else %}
+      <img src="{{ person.avatar }}" alt="">
+    {% endif  %}
       
-      {%  elsif person.avatar == "" %}
-        <img src="images/default_pfp.jpg" alt="">
-    
-      {% else %}
-        <img src="{{ person.avatar }}" alt="">
-      {% endif  %}
-        
-      <p>
-        {{ person.name }}
+    <p>
+      {{ person.name }}
+    </p>
+    <p>
+      {{ person.birthdate }}
+
+      {% assign birth_timestamp = person.birthdate | date: '%s' | default: 0 %}
+      {% assign now_timestamp = 'now' | date: '%s' %}
+      {% assign age = now_timestamp | minus: birth_timestamp | divided_by: 31556952 | floor %}
+      {{ age }}
+
       </p>
-      <p>
-        {{ person.birthdate }}
-
-        {% assign birth_timestamp = person.birthdate | date: '%s' | default: 0 %}
-        {% assign now_timestamp = 'now' | date: '%s' %}
-        {% assign age = now_timestamp | minus: birth_timestamp | divided_by: 31556952 | floor %}
-        {{ age }}
-
-        </p>
-    </section>
-    {% endfor %}
-    
-    {% comment %} <h2>Students</h2>
-    <ul>
-      {% for person in persons %}
-        <li><a href="/student/{{ person.id }}">{{ person.name }}</a></li>
-      {% endfor %}
-    </ul> {% endcomment %}
-    </div>
-
-    {% render 'partials/foot.liquid', squads: squads %}
+  </section>
