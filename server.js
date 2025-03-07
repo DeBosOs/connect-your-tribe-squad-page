@@ -68,7 +68,7 @@ app.post('/', async function (request, response) {
 })
 
 // get route naar leeftijd pagina
-app.get('/leeftijd/:age', async function (request, response) {
+app.get('/leeftijd', async function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   const personDetailResponse = await fetch('https://fdnd.directus.app/items/person/' + request.params.age)
   // En haal daarvan de JSON op
@@ -77,6 +77,29 @@ app.get('/leeftijd/:age', async function (request, response) {
   // Render student.liquid uit de views map en geef de opgehaalde data mee als variable, genaamd person
   // Geef ook de eerder opgehaalde squad data mee aan de view
   response.render('age.liquid', {person: personDetailResponseJSON.data, squads: squadResponseJSON.data})
+})
+
+app.get('/leeftijd', async function (request, response) {
+  let personResponseJSON
+
+  // let personURL = await fetch('https://fdnd.directus.app/items/person/?fields=*,squads.squad_id.name,squads.squad_id.cohort&filter=%7B%22_and%22:%5B%7B%22squads%22:%7B%22squad_id%22:%7B%22tribe%22:%7B%22name%22:%22FDND%20Jaar%201%22%7D%7D%7D%7D,%7B%22squads%22:%7B%22squad_id%22:%7B%22cohort%22:%222425%22%7D%7D%7D%5D%7D&sort=name')
+
+  if (request.query.sort == '16-17'){
+    const personResponse = await fetch('https://fdnd.directus.app/items/person/?sort=birthdate&fields=name,avatar,birthdate&filter=%7B%22_and%22:%5B%7B%22squads%22:%7B%22squad_id%22:%7B%22tribe%22:%7B%22name%22:%22FDND%20Jaar%201%22%7D%7D%7D%7D,%7B%22squads%22:%7B%22squad_id%22:%7B%22cohort%22:%222425%22%7D%7D%7D,%7B%22birthdate%22:%7B%22_gte%22:%222007-03-08%22%7D%7D,%7B%22birthdate%22:%7B%22_lt%22:%222009-03-08%22%7D%7D%5D%7D')
+    personResponseJSON = await personResponse.json()
+  } else if (request.query.sort == '18-19'){
+    const personResponse = await fetch('https://fdnd.directus.app/items/person/?sort=birthdate&fields=name,avatar,birthdate&filter=%7B%22_and%22:%5B%7B%22squads%22:%7B%22squad_id%22:%7B%22tribe%22:%7B%22name%22:%22FDND%20Jaar%201%22%7D%7D%7D%7D,%7B%22squads%22:%7B%22squad_id%22:%7B%22cohort%22:%222425%22%7D%7D%7D,%7B%22birthdate%22:%7B%22_gte%22:%222005-03-08%22%7D%7D,%7B%22birthdate%22:%7B%22_lt%22:%222007-03-08%22%7D%7D%5D%7D')
+    personResponseJSON = await personResponse.json()
+  }else if (request.query.sort == '20-21'){
+    const personResponse = await fetch('https://fdnd.directus.app/items/person/?sort=birthdate&fields=name,avatar,birthdate&filter=%7B%22_and%22:%5B%7B%22squads%22:%7B%22squad_id%22:%7B%22tribe%22:%7B%22name%22:%22FDND%20Jaar%201%22%7D%7D%7D%7D,%7B%22squads%22:%7B%22squad_id%22:%7B%22cohort%22:%222425%22%7D%7D%7D,%7B%22birthdate%22:%7B%22_gte%22:%222003-03-08%22%7D%7D,%7B%22birthdate%22:%7B%22_lt%22:%222005-03-08%22%7D%7D%5D%7D')
+    personResponseJSON = await personResponse.json()
+  }  
+  else {
+    const personResponse = await fetch('https://fdnd.directus.app/items/person/?sort=name&fields=name,avatar,birthdate&filter=%7B%22_and%22:%5B%7B%22squads%22:%7B%22squad_id%22:%7B%22tribe%22:%7B%22name%22:%22FDND%20Jaar%201%22%7D%7D%7D%7D,%7B%22squads%22:%7B%22squad_id%22:%7B%22cohort%22:%222425%22%7D%7D%7D%5D%7D')
+    personResponseJSON = await personResponse.json()
+  }
+
+  response.render('studenten.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
 })
 
 // Maak een GET route voor een detailpagina met een route parameter, id
