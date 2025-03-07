@@ -14,9 +14,8 @@ De instructie vind je in: [INSTRUCTIONS](https://github.com/fdnd-task/connect-yo
   * [Licentie](#licentie)
 
 ## Beschrijving
-<!-- In de Beschrijving staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+Op deze pagina is een overzicht van alle fdnd studenten. Bij hun wordt allemaal op dynamische wijze hun profielfoto, naam en leeftijd getoont.
+Door op de bovenste 3 filters te klikken is het mogelijk om te filteren op bepaalde informatie over de studenten
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met Javascript gedaan en hoe? Misschien heb je een framwork of library gebruikt? -->
